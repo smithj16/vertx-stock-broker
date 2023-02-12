@@ -19,8 +19,9 @@
     <vertx.version>4.3.7</vertx.version>
     <junit-jupiter.version>5.9.1</junit-jupiter.version>
 
-    <main.verticle>com.jacob.vertx_stock_broker.MainVerticle</main.verticle>
+    <main.verticle>com.jacob.vertx_stock_broker.Verticles.MainVerticle</main.verticle>
     <launcher.class>io.vertx.core.Launcher</launcher.class>
+    <jackson-databind.version>2.13.2.2</jackson-databind.version>
   </properties>
 
   <dependencyManagement>
@@ -44,6 +45,11 @@
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
       <version>1.4.5</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson-databind.version}</version>
     </dependency>
 
     <dependency>

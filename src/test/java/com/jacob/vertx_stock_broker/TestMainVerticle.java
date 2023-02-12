@@ -1,5 +1,6 @@
 package com.jacob.vertx_stock_broker;
 
+import com.jacob.vertx_stock_broker.Verticles.MainVerticle;
 import io.vertx.core.Vertx;
 import io.vertx.junit5.VertxExtension;
 import io.vertx.junit5.VertxTestContext;
