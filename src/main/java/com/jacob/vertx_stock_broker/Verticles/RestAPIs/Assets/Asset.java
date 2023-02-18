@@ -1,13 +1,9 @@
 package com.jacob.vertx_stock_broker.Verticles.RestAPIs.Assets;
 
+import lombok.Value;
+
+@Value
 public class Asset {
-  private final String name;
+  String name;
 
-  public Asset(final String name){
-    this.name = name;
-  }
-
-  public String getName() {
-    return name;
-  }
 }

@@ -1,6 +1,7 @@
 package com.jacob.vertx_stock_broker.Verticles;
 
 import com.jacob.vertx_stock_broker.Verticles.RestAPIs.Assets.AssetRestAPI;
+import com.jacob.vertx_stock_broker.Verticles.RestAPIs.Quotes.QuotesRestAPI;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
 import io.vertx.core.Vertx;
@@ -11,6 +12,7 @@ import org.slf4j.LoggerFactory;
 
 public class MainVerticle extends AbstractVerticle {
 
+  public static final int PORT = 8888;
   private static final Logger log = LoggerFactory.getLogger(MainVerticle.class);
   public static void main(String[] args) {
     Vertx vertx = Vertx.vertx();
@@ -27,6 +29,7 @@ public class MainVerticle extends AbstractVerticle {
   }
   @Override
   public void start(Promise<Void> startPromise) throws Exception {
+
     final Router restApi = Router.router(vertx);
     restApi.route().failureHandler(errorContext -> {
       if(errorContext.response().ended()){
@@ -36,7 +39,9 @@ public class MainVerticle extends AbstractVerticle {
       log.error("Route Error:", errorContext.failure());
       errorContext.response().setStatusCode(500).end(new JsonObject().put("message", "Something went wrong :(").toBuffer());
     });
+
     AssetRestAPI.attach(restApi);
+    QuotesRestAPI.attach(restApi);
 
     vertx.createHttpServer().requestHandler(restApi).exceptionHandler(error -> {
       log.error("HttpServer error: ", error);
@@ -48,5 +53,7 @@ public class MainVerticle extends AbstractVerticle {
         startPromise.fail(http.cause());
       }
     });
+
   }
+
 }
