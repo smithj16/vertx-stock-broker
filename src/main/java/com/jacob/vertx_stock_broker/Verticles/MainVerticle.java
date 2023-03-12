@@ -2,6 +2,7 @@ package com.jacob.vertx_stock_broker.Verticles;
 
 import com.jacob.vertx_stock_broker.Verticles.RestAPIs.Assets.AssetRestAPI;
 import com.jacob.vertx_stock_broker.Verticles.RestAPIs.Quotes.QuotesRestAPI;
+import com.jacob.vertx_stock_broker.Verticles.RestAPIs.WatchList.WatchListRestApi;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
 import io.vertx.core.Vertx;
@@ -42,6 +43,7 @@ public class MainVerticle extends AbstractVerticle {
 
     AssetRestAPI.attach(restApi);
     QuotesRestAPI.attach(restApi);
+    WatchListRestApi.attach(restApi);
 
     vertx.createHttpServer().requestHandler(restApi).exceptionHandler(error -> {
       log.error("HttpServer error: ", error);
