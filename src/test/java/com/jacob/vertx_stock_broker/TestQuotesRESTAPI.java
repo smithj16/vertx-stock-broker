@@ -2,7 +2,6 @@ package com.jacob.vertx_stock_broker;
 
 import com.jacob.vertx_stock_broker.Verticles.MainVerticle;
 import io.vertx.core.Vertx;
-import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.client.WebClient;
 import io.vertx.ext.web.client.WebClientOptions;

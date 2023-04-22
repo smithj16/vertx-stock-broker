@@ -1,8 +1,13 @@
 package com.jacob.vertx_stock_broker.Verticles.RestAPIs.Assets;
 
-import lombok.Value;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Value
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Asset {
   String name;
 
